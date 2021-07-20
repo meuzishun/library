@@ -30,13 +30,56 @@ body .wrapper header.library-header {
 body .wrapper header.library-header h1.main-heading {
   font-size: 5rem;
   font-weight: normal;
+  letter-spacing: 0.2rem;
 }
 
 body .wrapper header.library-header button.add-book-btn {
   font-size: 2rem;
-  padding: 0.5rem 1.5rem;
+  padding: 0.5rem 1rem;
   border: none;
   border-radius: 0.5rem;
   background-color: rgba(48, 237, 48, 0.44);
+}
+
+body .wrapper section.library {
+  display: flex;
+  flex-direction: column;
+}
+
+body .wrapper section.library div.book {
+  margin-top: 2rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  padding: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(165, 42, 42, 0.221);
+  border-radius: 0.5rem;
+}
+
+body .wrapper section.library div.book:last-child {
+  margin-bottom: 2rem;
+}
+
+body .wrapper section.library div.book div.book-info * {
+  margin: 0.5rem;
+}
+
+body .wrapper section.library div.book div.book-info p.title {
+  font-size: 2rem;
+}
+
+body .wrapper section.library div.book div.book-info p.author {
+  font-size: 1.3rem;
+}
+
+body .wrapper section.library div.book button.status {
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.5rem;
+  background-color: rgba(48, 108, 237, 0.44);
+  color: #f0f0f0;
 }
 /*# sourceMappingURL=style.css.map */

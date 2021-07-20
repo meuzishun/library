@@ -30,10 +30,11 @@ body {
             h1.main-heading {
                 font-size: 5rem;
                 font-weight: normal;
+                letter-spacing: 0.2rem;
             }
             button.add-book-btn {
                 font-size: 2rem;
-                padding: 0.5rem 1.5rem;
+                padding: 0.5rem 1rem;
                 border: none;
                 border-radius: 0.5rem;
                 background-color: rgba(48, 237, 48, 0.44);
@@ -41,13 +42,49 @@ body {
         }
 
         section.library {
+            display: flex;
+            flex-direction: column;
 
             div.book {
+                margin-top: 2rem;
+                margin-left: 1rem;
+                margin-right: 1rem;
+                padding: 2rem;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                background-color: rgba(165, 42, 42, 0.221);
+                border-radius: 0.5rem;
 
-                p.title {}
-                p.author {}
-                p.pages {}
-                button.status {}
+                &:last-child {
+                    margin-bottom: 2rem;
+                }
+
+                div.book-info {
+                    * {
+                        margin: 0.5rem;
+                    }
+
+                    p.title {
+                        font-size: 2rem;
+                    }
+                    
+                    p.author {
+                        font-size: 1.3rem;
+                    }
+
+                    p.pages {}
+
+                }
+                
+                button.status {
+                    font-size: 1rem;
+                    padding: 0.5rem 1rem;
+                    border: none;
+                    border-radius: 0.5rem;
+                    background-color: rgba(48, 108, 237, 0.44);
+                    color: rgb(240, 240, 240);
+                }
             }
         }
     }
