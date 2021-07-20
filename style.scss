@@ -8,3 +8,47 @@
 html {
     font-family: Arial, Helvetica, sans-serif;
 }
+
+body {
+    .wrapper {
+        border: 1px dotted black;
+        width: 90vw;
+        max-width: 960px;
+        min-width: 600px;
+        margin: 0 auto;
+
+        display: flex;
+        flex-direction: column;
+
+        header.library-header {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 3rem;
+            border-bottom: 0.1rem solid black;
+
+            h1.main-heading {
+                font-size: 5rem;
+                font-weight: normal;
+            }
+            button.add-book-btn {
+                font-size: 2rem;
+                padding: 0.5rem 1.5rem;
+                border: none;
+                border-radius: 0.5rem;
+                background-color: rgba(48, 237, 48, 0.44);
+            }
+        }
+
+        section.library {
+
+            div.book {
+
+                p.title {}
+                p.author {}
+                p.pages {}
+                button.status {}
+            }
+        }
+    }
+}
