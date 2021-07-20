@@ -50,7 +50,3 @@ function displayBooks() {
     });
 }
 
-let test1 = new Book('Python', 'Some dude', 550, true);
-
-addBookToLibrary(test1);
-displayBooks();
