@@ -41,12 +41,12 @@ body .wrapper header.library-header button.add-book-btn {
   background-color: rgba(48, 237, 48, 0.44);
 }
 
-body .wrapper section.library {
+body .wrapper section.visual-library {
   display: flex;
   flex-direction: column;
 }
 
-body .wrapper section.library div.book {
+body .wrapper section.visual-library div.book-container {
   margin-top: 2rem;
   margin-left: 1rem;
   margin-right: 1rem;
@@ -58,23 +58,23 @@ body .wrapper section.library div.book {
   border-radius: 0.5rem;
 }
 
-body .wrapper section.library div.book:last-child {
+body .wrapper section.visual-library div.book-container:last-child {
   margin-bottom: 2rem;
 }
 
-body .wrapper section.library div.book div.book-info * {
+body .wrapper section.visual-library div.book-container div.book-info * {
   margin: 0.5rem;
 }
 
-body .wrapper section.library div.book div.book-info p.title {
+body .wrapper section.visual-library div.book-container div.book-info p.title {
   font-size: 2rem;
 }
 
-body .wrapper section.library div.book div.book-info p.author {
+body .wrapper section.visual-library div.book-container div.book-info p.author {
   font-size: 1.3rem;
 }
 
-body .wrapper section.library div.book button.status {
+body .wrapper section.visual-library div.book-container button.status {
   font-size: 1rem;
   padding: 0.5rem 1rem;
   border: none;
