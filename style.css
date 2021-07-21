@@ -10,7 +10,6 @@ html {
 }
 
 body .wrapper {
-  border: 1px dotted black;
   width: 90vw;
   max-width: 960px;
   min-width: 600px;

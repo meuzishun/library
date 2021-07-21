@@ -6,6 +6,10 @@ const modalCloseBtn = document.querySelector('.close-btn');
 const submitBtn = document.querySelector('.submit-btn');
 const submissionForm = document.querySelector('form');
 let library = [];
+if (localStorage.books) {
+    library = JSON.parse(localStorage.getItem("books"));
+    displayBooks();
+}
 
 function Book(title, author, pages, read) {
     this.title = title;
@@ -19,6 +23,7 @@ function Book(title, author, pages, read) {
 
 function addBookToLibrary(book) {
     library.push(book);
+    localStorage.books = JSON.stringify(library);
 }
 
 function createCustomElement(elem, cl, txt, evt, cb) {
@@ -74,13 +79,12 @@ function handleCloseForm() {
 
 function handleStatusBtn(evt) {
     const elem = evt.target;
-    const text = elem.textContent;
-    if (text === 'Read') {
-        elem.textContent = 'Unread';
-    }
-    if (text === 'Unread') {
-        elem.textContent = 'Read';
-    }
+    const bookDisplay = elem.parentElement.parentElement;
+    const index = bookDisplay.dataset.index;
+    const state = library[index].read;
+    if (state) library[index].read = false;
+    if (!state) library[index].read = true;
+    displayBooks();
 }
 
 function handleRemoveBtn(evt) {
@@ -95,7 +99,6 @@ function handleBookSubmit(evt) {
     evt.preventDefault();
     const form = evt.target;
     const elements = [...form.elements].filter(elem => elem.type !== "submit");
-    console.log(elements);
 
     const [title, author, pages, read] = elements.map(elem => {
         if (elem.type === "text" || elem.type === "number") {
@@ -129,14 +132,14 @@ modalCloseBtn.addEventListener('click', handleCloseForm);
 submissionForm.addEventListener('submit', handleBookSubmit);
 
 
-function test() {
-    const hp1 = new Book('Harry Potter and the Philosopher\'s Stone', 'J. K. Rowling', 223, false);
-    addBookToLibrary(hp1);
-    const hp2 = new Book('Harry Potter and the Chamber of Secrets', 'J. K. Rowling', 251, false);
-    addBookToLibrary(hp2);
-    const hp3 = new Book('Harry Potter and the Prisoner of Azkaban', 'J. K. Rowling', 317, false);
-    addBookToLibrary(hp3);
-    displayBooks();
-}
+// function test() {
+//     const hp1 = new Book('Harry Potter and the Philosopher\'s Stone', 'J. K. Rowling', 223, false);
+//     addBookToLibrary(hp1);
+//     const hp2 = new Book('Harry Potter and the Chamber of Secrets', 'J. K. Rowling', 251, true);
+//     addBookToLibrary(hp2);
+//     const hp3 = new Book('Harry Potter and the Prisoner of Azkaban', 'J. K. Rowling', 317, false);
+//     addBookToLibrary(hp3);
+//     displayBooks();
+// }
 
-test();
+// test();
