@@ -85,6 +85,7 @@ function handleStatusBtn(evt) {
     if (state) library[index].read = false;
     if (!state) library[index].read = true;
     displayBooks();
+    localStorage.books = JSON.stringify(library);
 }
 
 function handleRemoveBtn(evt) {
@@ -93,6 +94,7 @@ function handleRemoveBtn(evt) {
     const index = bookDisplay.dataset.index;
     library.splice(index, 1);
     displayBooks();
+    localStorage.books = JSON.stringify(library);
 }
 
 function handleBookSubmit(evt) {
