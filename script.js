@@ -1,6 +1,7 @@
 const visualLibrary = document.querySelector('.visual-library');
 const addBookBtn = document.querySelector('.add-book-btn');
 const modal = document.querySelector('.new-book-form');
+const formContainer = modal.querySelector('.form-wrapper');
 const modalCloseBtn = document.querySelector('.close-btn');
 const submitBtn = document.querySelector('.submit-btn');
 const submissionForm = document.querySelector('form');
@@ -42,7 +43,7 @@ function appendChildren(container, childrenArray) {
 function displayBooks() {
     visualLibrary.textContent = '';
 
-    library.forEach(book => {
+    library.forEach((book, index) => {
         const bookInfo = createCustomElement('div', 'book-info');
         const bookTitle = createCustomElement('p', 'title', book.title);
         const bookAuthor = createCustomElement('p', 'author', book.author);
@@ -54,7 +55,8 @@ function displayBooks() {
         const removeBtn = createCustomElement('button', 'remove', 'Remove', 'click', handleRemoveBtn);
         appendChildren(btnContainer, [statusBtn, removeBtn]);
         
-        const bookContainer = createCustomElement('div', 'book-container');
+        const bookContainer = createCustomElement('div', `book-container`);
+        bookContainer.setAttribute('data-index', index);
         appendChildren(bookContainer, [bookInfo, btnContainer]);
 
         visualLibrary.appendChild(bookContainer);
@@ -63,6 +65,7 @@ function displayBooks() {
 
 function handleAddBook() {
     modal.classList.remove('hidden');
+    formContainer.classList.remove('hidden');
 }
 
 function handleCloseForm() {
@@ -83,8 +86,9 @@ function handleStatusBtn(evt) {
 function handleRemoveBtn(evt) {
     const elem = evt.target;
     const bookDisplay = elem.parentElement.parentElement;
-    const libraryDisplay = elem.parentElement.parentElement.parentElement;
-    libraryDisplay.removeChild(bookDisplay);
+    const index = bookDisplay.dataset.index;
+    library.splice(index, 1);
+    displayBooks();
 }
 
 function handleBookSubmit(evt) {

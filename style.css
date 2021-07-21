@@ -116,6 +116,7 @@ body article.new-book-form .form-wrapper {
   padding: 1rem;
   background-color: white;
   border-radius: 0.6rem;
+  position: relative;
 }
 
 body article.new-book-form .form-wrapper .close-btn {

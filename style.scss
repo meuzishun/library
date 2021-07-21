@@ -122,6 +122,10 @@ body {
             padding: 1rem;
             background-color: white;
             border-radius: 0.6rem;
+            position: relative;
+            // top: 0;
+            // transition: all ease-in-out 500ms;
+
             
             .close-btn {
                 text-align: end;
@@ -169,6 +173,11 @@ body {
 
     article.hidden {
         display: none;
+    }
+
+    div.form-wrapper.hidden {
+        // top: -400%;
+        // transition: all ease-in-out 500ms;
     }
 
     button {
