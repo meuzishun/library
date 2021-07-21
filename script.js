@@ -32,31 +32,30 @@ function createCustomElement(elem, cl, txt, evt, cb) {
     return markup;
 }
 
+function appendChildren(container, childrenArray) {
+    childrenArray.forEach(child => {
+        container.appendChild(child);
+    });
+}
+
 // for adding books to HTML
 function displayBooks() {
     visualLibrary.textContent = '';
 
     library.forEach(book => {
-        const bookContainer = createCustomElement('div', 'book-container');
         const bookInfo = createCustomElement('div', 'book-info');
-        const btnContainer = createCustomElement('div', 'btn-container');
-        
         const bookTitle = createCustomElement('p', 'title', book.title);
         const bookAuthor = createCustomElement('p', 'author', book.author);
         const bookPages = createCustomElement('p', 'pages', book.pages);
-
-        const statusBtn = createCustomElement('button', 'status', 'Mark as Read', handleStatusBtn);
-        const removeBtn = createCustomElement('button', 'remove', 'Remove', handleRemoveBtn);
-
-        bookInfo.appendChild(bookTitle);
-        bookInfo.appendChild(bookAuthor);
-        bookInfo.appendChild(bookPages);
-
-        btnContainer.appendChild(statusBtn);
-        btnContainer.appendChild(removeBtn);
-
-        bookContainer.appendChild(bookInfo);
-        bookContainer.appendChild(btnContainer);
+        appendChildren(bookInfo, [bookTitle, bookAuthor, bookPages]);
+        
+        const btnContainer = createCustomElement('div', 'btn-container');
+        const statusBtn = createCustomElement('button', 'status', 'Mark as Read', 'click', handleStatusBtn);
+        const removeBtn = createCustomElement('button', 'remove', 'Remove', 'click', handleRemoveBtn);
+        appendChildren(btnContainer, [statusBtn, removeBtn]);
+        
+        const bookContainer = createCustomElement('div', 'book-container');
+        appendChildren(bookContainer, [bookInfo, btnContainer]);
 
         visualLibrary.appendChild(bookContainer);
     });
@@ -70,9 +69,11 @@ function handleCloseForm() {
     modal.classList.add('hidden');
 }
 
-function handleStatusBtn() {}
+function handleStatusBtn(evt) {}
 
-function handleRemoveBtn() {}
+function handleRemoveBtn(evt) {
+    console.log(evt);
+}
 
 function handleBookSubmit(evt) {
     evt.preventDefault();
