@@ -20,41 +20,83 @@ function addBookToLibrary(book) {
     library.push(book);
 }
 
+function createBookContainer() {
+    const bookContainer = document.createElement('div');
+    bookContainer.classList.add('book-container');
+    return bookContainer;
+}
+
+function createBtnContainer() {
+    const btnContainer = document.createElement('div');
+    btnContainer.classList.add('btn-container');
+    return btnContainer;
+}
+
+function createBookInfo() {
+    const bookInfo = document.createElement('div');
+    bookInfo.classList.add('book-info');
+    return bookInfo;
+}
+
+function createBookTitle(text) {
+    const bookTitle = document.createElement('p');
+    bookTitle.classList.add('title');
+    bookTitle.textContent = text;
+    return bookTitle;
+}
+
+function createBookAuthor(text) {
+    const bookAuthor = document.createElement('p');
+    bookAuthor.classList.add('author');
+    bookAuthor.textContent = `Author: ${text}`;
+    return bookAuthor;
+}
+
+function createBookPages(text) {
+    const bookPages = document.createElement('p');
+    bookPages.classList.add('pages');
+    bookPages.textContent = `Length: ${text} pages`;
+    return bookPages;
+}
+
+function createStatusBtn() {
+    const statusBtn = document.createElement('button');
+    statusBtn.classList.add('status');
+    statusBtn.textContent = `Mark as Read`;
+    statusBtn.addEventListener('click', handleStatusBtn);
+    return statusBtn;
+}
+
+function createRemoveBtn() {
+    const removeBtn = document.createElement('button');
+    removeBtn.classList.add('remove');
+    removeBtn.textContent = `Remove`;
+    removeBtn.addEventListener('click', handleRemoveBtn);
+    return removeBtn;
+}
+
 // for adding books to HTML
 function displayBooks() {
     visualLibrary.textContent = '';
 
     library.forEach(book => {
-        const bookContainer = document.createElement('div');
-        const bookInfo = document.createElement('div');
-        const bookTitle = document.createElement('p');
-        const bookAuthor = document.createElement('p');
-        const bookPages = document.createElement('p');
-        const btnContainer = document.createElement('div');
-        const statusButton = document.createElement('button');
-        const removeButton = document.createElement('button');
+        const bookContainer = createBookContainer();
+        const bookInfo = createBookInfo();
+        const btnContainer = createBtnContainer();
+        
+        const bookTitle = createBookTitle(book.title);
+        const bookAuthor = createBookTitle(book.author);
+        const bookPages = createBookTitle(book.pages);
 
-        bookContainer.classList.add('book-container');
-        bookInfo.classList.add('book-info');
-        bookTitle.classList.add('title');
-        bookAuthor.classList.add('author');
-        bookPages.classList.add('pages');
-        btnContainer.classList.add('btn-container');
-        statusButton.classList.add('status');
-        removeButton.classList.add('remove');
-
-        bookTitle.textContent = book.title;
-        bookAuthor.textContent = `Author: ${book.author}`;
-        bookPages.textContent = `Length: ${book.pages} pages`;
-        statusButton.textContent = `Mark as Read`;
-        removeButton.textContent = `Remove`;
+        const statusBtn = createStatusBtn();
+        const removeBtn = createRemoveBtn();
 
         bookInfo.appendChild(bookTitle);
         bookInfo.appendChild(bookAuthor);
         bookInfo.appendChild(bookPages);
 
-        btnContainer.appendChild(statusButton);
-        btnContainer.appendChild(removeButton);
+        btnContainer.appendChild(statusBtn);
+        btnContainer.appendChild(removeBtn);
 
         bookContainer.appendChild(bookInfo);
         bookContainer.appendChild(btnContainer);
@@ -71,13 +113,17 @@ function handleCloseForm() {
     modal.classList.add('hidden');
 }
 
+function handleStatusBtn() {}
+
+function handleRemoveBtn() {}
+
 function handleBookSubmit(evt) {
     evt.preventDefault();
     const form = evt.target;
     const elements = [...form.elements].filter(elem => elem.type !== "submit");
     console.log(elements);
 
-    const values = elements.map(elem => {
+    const [title, author, pages, read] = elements.map(elem => {
         if (elem.type === "text" || elem.type === "number") {
             if (elem.value) return elem.value;
         }
@@ -85,9 +131,6 @@ function handleBookSubmit(evt) {
             return elem.checked;
         }
     });
-    console.log(values);
-
-    const [title, author, pages, read] = values;
 
     if (!title || !author || !pages) {
         alert('Please enter all fields');
