@@ -30,26 +30,34 @@ function displayBooks() {
         const bookTitle = document.createElement('p');
         const bookAuthor = document.createElement('p');
         const bookPages = document.createElement('p');
+        const btnContainer = document.createElement('div');
         const statusButton = document.createElement('button');
+        const removeButton = document.createElement('button');
 
         bookContainer.classList.add('book-container');
         bookInfo.classList.add('book-info');
         bookTitle.classList.add('title');
         bookAuthor.classList.add('author');
         bookPages.classList.add('pages');
+        btnContainer.classList.add('btn-container');
         statusButton.classList.add('status');
+        removeButton.classList.add('remove');
 
         bookTitle.textContent = book.title;
         bookAuthor.textContent = `Author: ${book.author}`;
         bookPages.textContent = `Length: ${book.pages} pages`;
         statusButton.textContent = `Mark as Read`;
+        removeButton.textContent = `Remove`;
 
         bookInfo.appendChild(bookTitle);
         bookInfo.appendChild(bookAuthor);
         bookInfo.appendChild(bookPages);
 
+        btnContainer.appendChild(statusButton);
+        btnContainer.appendChild(removeButton);
+
         bookContainer.appendChild(bookInfo);
-        bookContainer.appendChild(statusButton);
+        bookContainer.appendChild(btnContainer);
 
         visualLibrary.appendChild(bookContainer);
     });

@@ -77,14 +77,29 @@ body {
 
                 }
                 
-                button.status {
-                    font-size: 1rem;
-                    padding: 0.5rem 1rem;
-                    border: none;
-                    border-radius: 0.5rem;
-                    background-color: rgba(48, 108, 237, 0.44);
-                    color: rgb(240, 240, 240);
+                div.btn-container {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 1rem;
+
+                    button {
+                        font-size: 1rem;
+                        padding: 0.5rem 1rem;
+                        border: none;
+                        border-radius: 0.5rem;
+                    }
+
+                    button.status {
+                        background-color: rgba(48, 108, 237, 0.44);
+                        color: rgb(240, 240, 240);
+                    }
+
+                    button.remove {
+                        background-color: rgba(237, 48, 48, 0.44);
+                        color: rgb(240, 240, 240);
+                    }
                 }
+
             }
         }
     }
@@ -154,5 +169,13 @@ body {
 
     article.hidden {
         display: none;
+    }
+
+    button {
+        transition: all ease-in-out 100ms;
+    }
+
+    button:hover {
+        transform: scale(1.05);
     }
 }
