@@ -96,35 +96,47 @@ body article.new-book-form {
   align-items: center;
 }
 
-body article.new-book-form form {
+body article.new-book-form .form-wrapper {
   display: flex;
   flex-direction: column;
-  align-items: stretch;
+  padding: 1rem;
   background-color: white;
-  padding: 4rem;
   border-radius: 0.6rem;
 }
 
-body article.new-book-form form .container {
+body article.new-book-form .form-wrapper .close-btn {
+  text-align: end;
+  cursor: pointer;
+}
+
+body article.new-book-form .form-wrapper form {
+  padding: 2rem;
+  align-items: stretch;
+  display: flex;
+  flex-direction: column;
+}
+
+body article.new-book-form .form-wrapper form .container {
   margin: 1rem;
   display: flex;
   justify-content: space-between;
   gap: 2rem;
 }
 
-body article.new-book-form form .container * {
+body article.new-book-form .form-wrapper form .container * {
   font-size: 2rem;
 }
 
-body article.new-book-form form .read-container {
+body article.new-book-form .form-wrapper form .read-container {
   justify-content: center;
+  gap: 1rem;
 }
 
-body article.new-book-form form .read-container #read {
+body article.new-book-form .form-wrapper form .read-container #read {
   width: 1.5rem;
 }
 
-body article.new-book-form form .submit-btn {
+body article.new-book-form .form-wrapper form .submit-btn {
   font-size: 2rem;
   padding: 1rem 2rem;
   align-self: center;
@@ -132,5 +144,9 @@ body article.new-book-form form .submit-btn {
   border: none;
   background-color: rgba(227, 227, 85, 0.714);
   border-radius: 0.5rem;
+}
+
+body article.hidden {
+  display: none;
 }
 /*# sourceMappingURL=style.css.map */

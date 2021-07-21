@@ -1,4 +1,9 @@
 const visualLibrary = document.querySelector('.visual-library');
+const addBookBtn = document.querySelector('.add-book-btn');
+const modal = document.querySelector('.new-book-form');
+const modalCloseBtn = document.querySelector('.close-btn');
+const submitBtn = document.querySelector('.submit-btn');
+const submissionForm = document.querySelector('form');
 let library = [];
 
 function Book(title, author, pages, read) {
@@ -50,3 +55,24 @@ function displayBooks() {
     });
 }
 
+function handleAddBook() {
+    modal.classList.remove('hidden');
+}
+
+function handleCloseForm() {
+    modal.classList.add('hidden');
+}
+
+function handleBookSubmit(evt) {
+    evt.preventDefault();
+    const form = evt.target;
+    const elements = [...form.elements];
+    const values = elements.map(elem => elem.value);
+    console.log(values);
+}
+
+addBookBtn.addEventListener('click', handleAddBook);
+modalCloseBtn.addEventListener('click', handleCloseForm);
+// submitBtn.addEventListener('click', handleBookSubmit);
+submissionForm.addEventListener('submit', handleBookSubmit);
+console.log(submissionForm);
