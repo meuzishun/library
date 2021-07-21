@@ -80,20 +80,38 @@ function handleBookSubmit(evt) {
     console.log(values);
 
     const [title, author, pages, read] = values;
-    const bookToBeAdded = new Book(title, author, pages, read);
-    addBookToLibrary(bookToBeAdded);
-    displayBooks();
-    modal.classList.add('hidden');
-    elements.forEach(elem => {
-        if (elem.type === 'text' || elem.type === 'number') {
-            elem.value = '';
-        }
-        if (elem.type === 'checkbox') {
-            elem.checked = false;
-        }
-    });
+
+    if (!title || !author || !pages) {
+        alert('Please enter all fields');
+    } else {
+        const bookToBeAdded = new Book(title, author, pages, read);
+        addBookToLibrary(bookToBeAdded);
+        displayBooks();
+        modal.classList.add('hidden');
+        elements.forEach(elem => {
+            if (elem.type === 'text' || elem.type === 'number') {
+                elem.value = '';
+            }
+            if (elem.type === 'checkbox') {
+                elem.checked = false;
+            }
+        });
+    }
 }
 
 addBookBtn.addEventListener('click', handleAddBook);
 modalCloseBtn.addEventListener('click', handleCloseForm);
 submissionForm.addEventListener('submit', handleBookSubmit);
+
+
+function test() {
+    const hp1 = new Book('Harry Potter and the Philosopher\'s Stone', 'J. K. Rowling', 223, false);
+    addBookToLibrary(hp1);
+    const hp2 = new Book('Harry Potter and the Chamber of Secrets', 'J. K. Rowling', 251, false);
+    addBookToLibrary(hp2);
+    const hp3 = new Book('Harry Potter and the Prisoner of Azkaban', 'J. K. Rowling', 317, false);
+    addBookToLibrary(hp3);
+    displayBooks();
+}
+
+test();
