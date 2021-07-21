@@ -50,7 +50,7 @@ function displayBooks() {
         appendChildren(bookInfo, [bookTitle, bookAuthor, bookPages]);
         
         const btnContainer = createCustomElement('div', 'btn-container');
-        const statusBtn = createCustomElement('button', 'status', 'Mark as Read', 'click', handleStatusBtn);
+        const statusBtn = createCustomElement('button', 'status', `${book.read ? `Read` : `Unread`}`, 'click', handleStatusBtn);
         const removeBtn = createCustomElement('button', 'remove', 'Remove', 'click', handleRemoveBtn);
         appendChildren(btnContainer, [statusBtn, removeBtn]);
         
@@ -69,10 +69,22 @@ function handleCloseForm() {
     modal.classList.add('hidden');
 }
 
-function handleStatusBtn(evt) {}
+function handleStatusBtn(evt) {
+    const elem = evt.target;
+    const text = elem.textContent;
+    if (text === 'Read') {
+        elem.textContent = 'Unread';
+    }
+    if (text === 'Unread') {
+        elem.textContent = 'Read';
+    }
+}
 
 function handleRemoveBtn(evt) {
-    console.log(evt);
+    const elem = evt.target;
+    const bookDisplay = elem.parentElement.parentElement;
+    const libraryDisplay = elem.parentElement.parentElement.parentElement;
+    libraryDisplay.removeChild(bookDisplay);
 }
 
 function handleBookSubmit(evt) {
