@@ -66,13 +66,34 @@ function handleCloseForm() {
 function handleBookSubmit(evt) {
     evt.preventDefault();
     const form = evt.target;
-    const elements = [...form.elements];
-    const values = elements.map(elem => elem.value);
+    const elements = [...form.elements].filter(elem => elem.type !== "submit");
+    console.log(elements);
+
+    const values = elements.map(elem => {
+        if (elem.type === "text" || elem.type === "number") {
+            if (elem.value) return elem.value;
+        }
+        if (elem.type === "checkbox") {
+            return elem.checked;
+        }
+    });
     console.log(values);
+
+    const [title, author, pages, read] = values;
+    const bookToBeAdded = new Book(title, author, pages, read);
+    addBookToLibrary(bookToBeAdded);
+    displayBooks();
+    modal.classList.add('hidden');
+    elements.forEach(elem => {
+        if (elem.type === 'text' || elem.type === 'number') {
+            elem.value = '';
+        }
+        if (elem.type === 'checkbox') {
+            elem.checked = false;
+        }
+    });
 }
 
 addBookBtn.addEventListener('click', handleAddBook);
 modalCloseBtn.addEventListener('click', handleCloseForm);
-// submitBtn.addEventListener('click', handleBookSubmit);
 submissionForm.addEventListener('submit', handleBookSubmit);
-console.log(submissionForm);
