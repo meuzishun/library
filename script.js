@@ -75,21 +75,40 @@ function createRemoveBtn() {
     return removeBtn;
 }
 
+function createCustomElement(elem, cl, txt, evt, cb) {
+    const markup = document.createElement(elem);
+    markup.classList.add(cl);
+    if (txt) {
+        markup.textContent = txt;
+    }
+    if (evt && cb) {
+        markup.addEventListener(evt, cb);
+    }
+    return markup;
+}
+
 // for adding books to HTML
 function displayBooks() {
     visualLibrary.textContent = '';
 
     library.forEach(book => {
-        const bookContainer = createBookContainer();
-        const bookInfo = createBookInfo();
-        const btnContainer = createBtnContainer();
+        // const bookContainer = createBookContainer();
+        const bookContainer = createCustomElement('div', 'book-container');
+        // const bookInfo = createBookInfo();
+        const bookInfo = createCustomElement('div', 'book-info');
+        const btnContainer = createCustomElement('div', 'btn-container');
         
-        const bookTitle = createBookTitle(book.title);
-        const bookAuthor = createBookTitle(book.author);
-        const bookPages = createBookTitle(book.pages);
+        // const bookTitle = createBookTitle(book.title);
+        const bookTitle = createCustomElement('p', 'title', book.title);
+        // const bookAuthor = createBookAuthor(book.author);
+        const bookAuthor = createCustomElement('p', 'author', book.author);
+        // const bookPages = createBookPages(book.pages);
+        const bookPages = createCustomElement('p', 'pages', book.pages);
 
-        const statusBtn = createStatusBtn();
-        const removeBtn = createRemoveBtn();
+        // const statusBtn = createStatusBtn();
+        const statusBtn = createCustomElement('button', 'status', 'Mark as Read', handleStatusBtn);
+        // const removeBtn = createRemoveBtn();
+        const removeBtn = createCustomElement('button', 'remove', 'Remove', handleRemoveBtn);
 
         bookInfo.appendChild(bookTitle);
         bookInfo.appendChild(bookAuthor);
