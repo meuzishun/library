@@ -20,61 +20,6 @@ function addBookToLibrary(book) {
     library.push(book);
 }
 
-function createBookContainer() {
-    const bookContainer = document.createElement('div');
-    bookContainer.classList.add('book-container');
-    return bookContainer;
-}
-
-function createBtnContainer() {
-    const btnContainer = document.createElement('div');
-    btnContainer.classList.add('btn-container');
-    return btnContainer;
-}
-
-function createBookInfo() {
-    const bookInfo = document.createElement('div');
-    bookInfo.classList.add('book-info');
-    return bookInfo;
-}
-
-function createBookTitle(text) {
-    const bookTitle = document.createElement('p');
-    bookTitle.classList.add('title');
-    bookTitle.textContent = text;
-    return bookTitle;
-}
-
-function createBookAuthor(text) {
-    const bookAuthor = document.createElement('p');
-    bookAuthor.classList.add('author');
-    bookAuthor.textContent = `Author: ${text}`;
-    return bookAuthor;
-}
-
-function createBookPages(text) {
-    const bookPages = document.createElement('p');
-    bookPages.classList.add('pages');
-    bookPages.textContent = `Length: ${text} pages`;
-    return bookPages;
-}
-
-function createStatusBtn() {
-    const statusBtn = document.createElement('button');
-    statusBtn.classList.add('status');
-    statusBtn.textContent = `Mark as Read`;
-    statusBtn.addEventListener('click', handleStatusBtn);
-    return statusBtn;
-}
-
-function createRemoveBtn() {
-    const removeBtn = document.createElement('button');
-    removeBtn.classList.add('remove');
-    removeBtn.textContent = `Remove`;
-    removeBtn.addEventListener('click', handleRemoveBtn);
-    return removeBtn;
-}
-
 function createCustomElement(elem, cl, txt, evt, cb) {
     const markup = document.createElement(elem);
     markup.classList.add(cl);
@@ -92,22 +37,15 @@ function displayBooks() {
     visualLibrary.textContent = '';
 
     library.forEach(book => {
-        // const bookContainer = createBookContainer();
         const bookContainer = createCustomElement('div', 'book-container');
-        // const bookInfo = createBookInfo();
         const bookInfo = createCustomElement('div', 'book-info');
         const btnContainer = createCustomElement('div', 'btn-container');
         
-        // const bookTitle = createBookTitle(book.title);
         const bookTitle = createCustomElement('p', 'title', book.title);
-        // const bookAuthor = createBookAuthor(book.author);
         const bookAuthor = createCustomElement('p', 'author', book.author);
-        // const bookPages = createBookPages(book.pages);
         const bookPages = createCustomElement('p', 'pages', book.pages);
 
-        // const statusBtn = createStatusBtn();
         const statusBtn = createCustomElement('button', 'status', 'Mark as Read', handleStatusBtn);
-        // const removeBtn = createRemoveBtn();
         const removeBtn = createCustomElement('button', 'remove', 'Remove', handleRemoveBtn);
 
         bookInfo.appendChild(bookTitle);
