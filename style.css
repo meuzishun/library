@@ -107,6 +107,8 @@ body article.new-book-form {
   display: grid;
   justify-content: center;
   align-items: center;
+  visibility: visible;
+  animation: fadeIn 500ms;
 }
 
 body article.new-book-form .form-wrapper {
@@ -116,6 +118,8 @@ body article.new-book-form .form-wrapper {
   background-color: white;
   border-radius: 0.6rem;
   position: relative;
+  transform: translateY(-10%);
+  animation: slideDown 500ms;
 }
 
 body article.new-book-form .form-wrapper .close-btn {
@@ -162,6 +166,7 @@ body article.new-book-form .form-wrapper form .submit-btn {
 
 body article.hidden {
   display: none;
+  visibility: hidden;
 }
 
 body button {
@@ -170,5 +175,32 @@ body button {
 
 body button:hover {
   transform: scale(1.05);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-200%);
+  }
+  to {
+    transform: translateY(-10%);
+  }
 }
 /*# sourceMappingURL=style.css.map */
