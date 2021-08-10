@@ -10,13 +10,15 @@ if (localStorage.books) {
     library = JSON.parse(localStorage.getItem("books"));
     displayBooks();
 }
+class Book{
+    constructor(title, author, pages, read) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.read = read;
+    }
 
-function Book(title, author, pages, read) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read;
-    this.info = function() {
+    info() {
         return `${title} by ${author}, ${pages} pages, ${read ? `read` : `not read yet`}`;
     }
 }
